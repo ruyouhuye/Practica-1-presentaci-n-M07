@@ -22,7 +22,6 @@ function news_reader():array{
         $json_news = read_json("../db_json",$filename);
         extract($json_news);
     }
-    usort($news_array,'comparedByTime');
     return $news_array;
 }
 
