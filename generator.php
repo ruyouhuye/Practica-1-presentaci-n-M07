@@ -6,7 +6,7 @@ require_once('./src/lib/utils.php');
 function galery(): void{
     $img_array = glob('public/img/*.jpeg');//recoger imagenes de carpeta
     print_r($img_array);
-    $template_index = "src/templates/galery.template.php";//la ruta template
+    $template_index = "src/template/galery.template.php";//la ruta template
     $new_img_array = make_path($img_array);//array con nuevas rutas 
     print_r($new_img_array);
     make_index_html($template_index, $new_img_array);

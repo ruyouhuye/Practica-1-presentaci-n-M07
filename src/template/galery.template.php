@@ -10,7 +10,8 @@
     <h1>Galery</h1>
     <?php
         foreach($img_array as $img){
-            echo "<a href='/public/campeon2022.html' target='_blank'> <img src='$img'> </a> <br>";//es  ejemplo que solp entiene el rruyou
+            echo "<a href='l' target='_blank'> <img src='$img'> </a> <br>";
+            //echo "<a href='/public/campeon2022.html' target='_blank'> <img src='$img'> </a> <br>";//es  ejemplo que solp entiene el rruyou
         }
     ?>
 
