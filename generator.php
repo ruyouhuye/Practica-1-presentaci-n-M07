@@ -2,6 +2,38 @@
 declare(strict_types=1);
 require_once('./src/lib/utils.php');
 
+
+/*news_reader***********************************************/
+
+function make_index(string $index_template_filename , array $news_array): void{
+    
+    $template_vars = ['news_array' => $news_array];//cada vez que en el template encuentre 'img_array' lo cambia a $img_array
+    $blog_html = render_template($index_template_filename, $template_vars);//devuelve plantilla del template con $template_vars cambiados
+    $index_html = "public/blog.html";//la ruta donde genera el .html, contiene 4 fotos que son albumes
+    file_put_contents($index_html, $blog_html);
+    
+}
+
+function news_reader():array{
+    $news_array =[];
+    $news_path = glob("../db_json/*.json");
+    $filenames_array = array_map('get_file_name', $news_path);
+    foreach($filenames_array as  $filename){
+        $json_news = read_json("../db_json",$filename);
+        extract($json_news);
+    }
+    usort($news_array,'comparedByTime');
+    return $news_array;
+}
+
+function get_file_name(string $path):string{
+    return basename($path);
+
+}
+
+
+
+
 /*Galery **************************************************/
 function galery(): void{
     $img_array = glob('public/img/*.jpeg');//recoger imagenes de carpeta
@@ -30,10 +62,15 @@ function make_index_html(string $index_template_filename , array $img_array): vo
 }
 
 
+
+
 /*Main **************************************************/
 function main(): void {
     //galeria generator
     galery();
+
+    //blog
+    news_reader();
 
 }
 
