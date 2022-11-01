@@ -35,7 +35,7 @@ function get_file_name(string $path):string{
 
 /*Galery **************************************************/
 function galery(): void{
-    $img_array = glob('public/img/*.jpeg');//recoger imagenes de carpeta
+    $img_array = glob('/db/Logos/*');//recoger imagenes de carpeta
     print_r($img_array);
     $template_index = "src/template/galery.template.php";//la ruta template
     $new_img_array = make_path($img_array);//array con nuevas rutas 
@@ -69,7 +69,7 @@ function main(): void {
     galery();
 
     //blog
-    news_reader();
+    //news_reader();
 
 }
 
