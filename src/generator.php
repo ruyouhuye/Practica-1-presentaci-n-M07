@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
-require_once('./src/lib/utils.php');
+require_once(__DIR__ . '/lib/utils.php');
 
 
 /*news_reader***********************************************/
-
+/*
 function make_index(string $index_template_filename , array $news_array): void{
     
     $template_vars = ['news_array' => $news_array];//cada vez que en el template encuentre 'img_array' lo cambia a $img_array
@@ -29,7 +29,26 @@ function get_file_name(string $path):string{
     return basename($path);
 
 }
+*/
 
+function blog(){
+    $name_array                   = read_json('../db/2022-10-24.json');
+
+    $index_template_filename      = "../src/template/blog.template.php";
+
+    make_index_html(      $index_template_filename, $name_array);
+}
+
+function make_index_html(  string $index_template_filename,
+                           array  $name_array,
+                        ): void {
+
+    $template_vars = ['name_array' => $name_array];
+    $index         = render_template($index_template_filename, $template_vars);
+
+    $html_filename = "../public/blog.html";
+    file_put_contents($html_filename, $index);
+}
 
 
 
@@ -51,6 +70,7 @@ function make_path(array $img_array):array{
     }
     return $result;
 }
+/*
 function make_index_html(string $index_template_filename , array $img_array): void{
     
     $template_vars = ['img_array' => $img_array];//cada vez que en el template encuentre 'img_array' lo cambia a $img_array
@@ -59,6 +79,7 @@ function make_index_html(string $index_template_filename , array $img_array): vo
     file_put_contents($index_html, $galery_html);
     
 }
+*/
 
 
 
@@ -66,9 +87,9 @@ function make_index_html(string $index_template_filename , array $img_array): vo
 /*Main **************************************************/
 function main(): void {
     //galeria generator
-    galery();
+    //galery();
 
-    //blog
+    blog();
     //news_reader();
 
 }
