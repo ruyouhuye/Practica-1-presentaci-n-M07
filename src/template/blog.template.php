@@ -28,11 +28,15 @@
                 </ul>
             </nav>
         </header>
-        <?php foreach($name_array as $name): ?>
-               <ul>
-                    <li><?php echo$name['body']?></li>
-               </ul>
-        <?php endforeach;;?>
+        
+        <ul>
+        <?php foreach($news_array as $news) {
+                $date = $news['date'];
+                $body = $news['body'];
+                echo "<li> $body </li>";
+            }
+        ?>
+        </ul>
 </body>
 
 </html>
