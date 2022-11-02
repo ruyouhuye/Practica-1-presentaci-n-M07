@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once(__DIR__ . '/lib/utils.php');
 
 
-/*news_reader***********************************************/
+//news_reader
 
 function make_blog(): void {
 
@@ -17,9 +17,47 @@ function make_blog(): void {
     
 }
 
+// Galery
+function rewrite_path(string $local_file): string{
+    $filename = basename($local_file);
+    $web_link = '../db/Fotos/Logos/' . $filename;
+
+    return $web_link;
+}
+
+function make_galery(): void {
+
+    $path_image_array = glob('../db/Fotos/Logos/*');
+
+    $web_links = array_map('rewrite_path', $path_image_array);
+
+    $template_filename = 'template/galery.template.php';
+    $template_vars     = ['images_array' => $web_links];
+    $index_contents    = render_template($template_filename,$template_vars);
+
+    file_put_contents('../public/galery.html',$index_contents);
+}
 
 
-/*Galery **************************************************/
+function make_table(): void{
+    
+    $tabla = file_get_contents('../db/liga - Hoja 1.csv');
+
+    $table = [];
+    $line_array = explode("\n", $tabla);
+    foreach($line_array as $line){
+        $row = explode(",", $line);
+        array_push($table, $row);
+    }
+
+    $template_table= "../src/template/table.template.php";
+    $filename_html = "../public/table.html";
+    $template_vars = ['table' => $table];
+    $end_index = render_template($template_table,$template_vars);
+    file_put_contents($filename_html,$end_index);
+}
+
+/*Galery **************************************************
 function galery(): void{
     $img_array = glob('../../db/Fotos/Logos/*');//recoger imagenes de carpeta
     print_r($img_array);
@@ -37,7 +75,7 @@ function make_path(array $img_array):array{
     }
     return $result;
 }
-/*
+
 function make_index_html(string $index_template_filename , array $img_array): void{
     
     $template_vars = ['img_array' => $img_array];//cada vez que en el template encuentre 'img_array' lo cambia a $img_array
@@ -56,8 +94,10 @@ function main(): void {
     //galeria generator
     //galery();
 
-    make_blog();
+    //make_blog();
     //news_reader();
+    //make_galery();
+    make_table();
 
 }
 
