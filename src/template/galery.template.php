@@ -15,7 +15,7 @@
                 echo "<a href=''>";
                 echo "<img src='$image'>";
                 echo "</a>";
-                echo "</div>";
+                echo "</div>" . PHP_EOL;
             }
         ?>
     </div>

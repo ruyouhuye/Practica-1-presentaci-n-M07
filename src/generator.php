@@ -3,7 +3,7 @@ declare(strict_types=1);
 require_once(__DIR__ . '/lib/utils.php');
 
 
-//news_reader
+// Blog (funciona)
 
 function make_blog(): void {
 
@@ -17,7 +17,7 @@ function make_blog(): void {
     
 }
 
-// Galery
+// Galery (a medias)
 function rewrite_path(string $local_file): string{
     $filename = basename($local_file);
     $web_link = '../db/Fotos/Logos/' . $filename;
@@ -38,6 +38,7 @@ function make_galery(): void {
     file_put_contents('../public/galery.html',$index_contents);
 }
 
+// Data Table (funciona)
 
 function make_table(): void{
     
@@ -55,6 +56,12 @@ function make_table(): void{
     $template_vars = ['table' => $table];
     $end_index = render_template($template_table,$template_vars);
     file_put_contents($filename_html,$end_index);
+}
+
+// Web Service
+
+function make_web_service(): void {
+    
 }
 
 /*Galery **************************************************
@@ -89,15 +96,13 @@ function make_index_html(string $index_template_filename , array $img_array): vo
 
 
 
-/*Main **************************************************/
-function main(): void {
-    //galeria generator
-    //galery();
+// Main
 
+function main(): void {
     //make_blog();
-    //news_reader();
     //make_galery();
     make_table();
+    //make_web_service();
 
 }
 
