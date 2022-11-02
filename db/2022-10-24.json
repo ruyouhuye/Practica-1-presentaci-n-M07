@@ -1,7 +1,16 @@
-{
-    "id":"two",
-    "date":"2022-10-24",
-    "title":"El Barcelona gana al Atlhetic Club Bilbao",
-    "author":"Antonio Perez",
-    "body":"El Barcelona ganó por 4-0 ante el Atlhetic Club Bilbao y se queda cerca del Real Madrid en la clasificacion"
-}
+[
+    {
+        "id":"two",
+        "date":"2022-10-24",
+        "title":"El Barcelona gana al Atlhetic Club Bilbao",
+        "author":"Antonio Perez",
+        "body":"El Barcelona ganó por 4-0 ante el Atlhetic Club Bilbao y se queda cerca del Real Madrid en la clasificacion"
+    },
+    {
+        "id":"one",
+        "date":"2022-10-28",
+        "title":"El Barcelona cae en Champions",
+        "author":"Ramiro Gonzalez",
+        "body":"El Barcelona cayo por 0-3 ante el Bayern Munchen y se despidio de la UEFA Champions League muy tempranamente y de forma estrepitosa"
+    }
+]
