@@ -33,6 +33,7 @@
         <?php foreach($news_array as $news) {
                 $date = $news['date'];
                 $body = $news['body'];
+                echo "<li> $date </li>";
                 echo "<li> $body </li>";
             }
         ?>

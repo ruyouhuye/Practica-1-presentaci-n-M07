@@ -59,12 +59,12 @@ function read_json(string $json_filename): array {
 
     return $result;
 }
-function read_json_by_id($id){
+/* function read_json_by_id($id){
     $datos = read_json();
     foreach($datos as $dato){
         if($dato['id']==$id){
             return $dato;
         }
     }
-}
+} */
 // --------------------------------------------------------------------

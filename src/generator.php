@@ -7,12 +7,12 @@ require_once(__DIR__ . '/lib/utils.php');
 
 function make_blog(): void {
 
-    $news_array = read_json("../db/news.json");
+    $news_array = read_json('../db/news.json');
     $index_template_filename = "../src/template/blog.template.php";
     $template_vars = ['news_array' => $news_array];
 
     $blog_contents = render_template($index_template_filename, $template_vars);
-    $blog_filename = "public/blog.html";
+    $blog_filename = "../public/blog.html";
     file_put_contents($blog_filename, $blog_contents);
     
 }
@@ -26,7 +26,7 @@ function galery(): void{
     $template_index = "src/template/galery.template.php";//la ruta template
     $new_img_array = make_path($img_array);//array con nuevas rutas 
     print_r($new_img_array);
-    make_index_html($template_index, $new_img_array);
+    //make_index_html($template_index, $new_img_array);
 }
 function make_path(array $img_array):array{
     $result = [];
