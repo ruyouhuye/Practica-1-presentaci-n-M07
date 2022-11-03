@@ -18,24 +18,34 @@ function make_blog(): void {
 }
 
 // Galery (a medias)
-function rewrite_path(string $local_file): string{
-    $filename = basename($local_file);
-    $web_link = '../db/Fotos/Logos/' . $filename;
+// function rewrite_path(string $local_file): string{
+//     $filename = basename($local_file);
+//     $web_link = '../db/Fotos/Logos/' . $filename;
 
-    return $web_link;
-}
+//     return $web_link;
+// }
 
-function make_galery(): void {
+function make_galery(string $html_filename, string $dir_name): void {
 
-    $path_image_array = glob('../db/Fotos/Logos/*');
+    $path = "../db/Fotos/$dir_name/*";
 
-    $web_links = array_map('rewrite_path', $path_image_array);
+    $path_image_array = glob($path);
+
+    $web_links = array();
+
+    foreach ($path_image_array as $image) {
+        $filename = basename($image);
+        $web_links[] = "../db/Fotos/$dir_name/" . $filename;
+    }
+
+    //$web_links = array_map('rewrite_path', $path_image_array);
+    $html_filename = "../public/$html_filename";
 
     $template_filename = 'template/galery.template.php';
     $template_vars     = ['images_array' => $web_links];
     $index_contents    = render_template($template_filename,$template_vars);
 
-    file_put_contents('../public/galery.html',$index_contents);
+    file_put_contents($html_filename,$index_contents);
 }
 
 // Data Table (funciona)
@@ -61,7 +71,7 @@ function make_table(): void{
 // Web Service
 
 function make_web_service(): void {
-    
+
 }
 
 /*Galery **************************************************
@@ -100,8 +110,12 @@ function make_index_html(string $index_template_filename , array $img_array): vo
 
 function main(): void {
     //make_blog();
-    //make_galery();
-    make_table();
+    make_galery("galery.html","Logos");
+    // make_galery("ballondor.html","BallonDor");
+    // make_galery("champions.html","Champions");
+    // make_galery("promises.html","Promises");
+     make_galery("worldcup.html","WorldCup");
+    //make_table();
     //make_web_service();
 
 }
