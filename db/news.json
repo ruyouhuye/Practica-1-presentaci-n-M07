@@ -1,16 +1,30 @@
 [
     {
-        "id":"two",
+        "id":"one",
         "date":"2022-10-24",
         "title":"El Barcelona gana al Atlhetic Club Bilbao",
         "author":"Antonio Perez",
         "body":"El Barcelona ganó por 4-0 ante el Atlhetic Club Bilbao y se queda cerca del Real Madrid en la clasificacion"
     },
     {
-        "id":"one",
+        "id":"two",
         "date":"2022-10-28",
         "title":"El Barcelona cae en Champions",
         "author":"Ramiro Gonzalez",
         "body":"El Barcelona cayo por 0-3 ante el Bayern Munchen y se despidio de la UEFA Champions League muy tempranamente y de forma estrepitosa"
+    },
+    {
+        "id":"three",
+        "date":"2022-11-03",
+        "title":"Gerard Pique se retira",
+        "author":"Spidercule",
+        "body":"El jugador Gerard Pique ha anunciado a traves de sus redes sociales mostrando un video que este sabado sera su ultimo partido como jugador y se retirara como jugador"
+    },
+    {
+        "id":"four",
+        "date":"2022-11-02",
+        "title":"El PSG posible rival del Real Madrid",
+        "author":"Tomas Roncero",
+        "body":"El PSG puede ser rival en el emparejamiento de octavos de final de la UEFA Champions League, ya que paso como segundo de grupo y seria la vuelta de Sergio Ramos o Messi al Santiago Bernabeu"
     }
 ]

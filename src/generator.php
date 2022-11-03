@@ -109,14 +109,14 @@ function make_index_html(string $index_template_filename , array $img_array): vo
 // Main
 
 function main(): void {
-    //make_blog();
+    make_blog();
     make_galery("galery.html","Logos");
-    // make_galery("ballondor.html","BallonDor");
-    // make_galery("champions.html","Champions");
-    // make_galery("promises.html","Promises");
-     make_galery("worldcup.html","WorldCup");
-    //make_table();
-    //make_web_service();
+    make_galery("ballondor.html","BallonDor");
+    make_galery("champions.html","Champions");
+    make_galery("promises.html","Promises");
+    make_galery("worldcup.html","WorldCup");
+    make_table();
+    // make_web_service();
 
 }
 
@@ -124,3 +124,15 @@ function main(): void {
 main();
 
 // php -S 0.0.0.0:8080 -t dir(root_server)
+
+//Notas
+
+//Blog hecho
+
+//Galeria - falta poner href (css hecho)
+
+//Taula hecho
+
+//Web service - todo
+
+//
