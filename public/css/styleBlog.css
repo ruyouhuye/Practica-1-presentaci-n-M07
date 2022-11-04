@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0.5em;
+}
+
+body{
+    background-color: #212025;
+    color: black;
+}
+
+h1{
+    color: aqua;
+    text-align: center;
+}
+
+.container{
+    margin: 0 auto;
+    width: 700px;
+}
+
+.card{
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+}

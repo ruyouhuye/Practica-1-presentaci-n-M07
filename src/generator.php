@@ -64,14 +64,22 @@ function make_table(): void{
 // Web Service
 
 function make_web_service(): void {
-    $data = json_decode( file_get_contents('https://www.balldontlie.io/api/v1/teams/15'), true );
+    $webs_array = json_decode( file_get_contents('https://www.balldontlie.io/api/v1/teams'), true );
+    $index_template_filename = "../src/template/service.template.php";
+    $template_vars = ['webs_array' => $webs_array];
     //echo file_get_contents('https://api.football-data.org/v4/matches');
-    echo $data['city'];
+    $web_contents = render_template($index_template_filename, $template_vars);
+    $web_filename = "../public/service.html";
+    file_put_contents($web_filename, $web_contents);
 }
 
 // Main
 
 function main(): void {
+    shell_exec("rm -r -f ../public/*");
+    $origin = "../resources/*";
+    $destin = "../public/";
+    shell_exec("cp -r $origin $destin");
     make_blog();
     make_galery("galery.html","Logos");
     make_galery("ballondor.html","BallonDor");
@@ -79,7 +87,7 @@ function main(): void {
     make_galery("promises.html","Promises");
     make_galery("worldcup.html","WorldCup");
     make_table();
-    // make_web_service();
+    //make_web_service();
 
 }
 
@@ -87,15 +95,3 @@ function main(): void {
 main();
 
 // php -S 0.0.0.0:8080 -t dir(root_server)
-
-//Notas
-
-//Blog hecho
-
-//Galeria - falta poner href (css hecho)
-
-//Taula hecho
-
-//Web service - falta todo
-
-//

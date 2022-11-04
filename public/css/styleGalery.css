@@ -1,0 +1,33 @@
+*{
+    margin:0;
+	padding:0;
+	width:100%;
+    background-color: #212025;
+}
+
+body{
+    color: white;
+}
+
+h1{
+    color: aqua;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#main{
+    padding-top: 35px;
+    margin: 0 auto;
+    width: 49.5%;
+    height: 49.5%;
+}
+
+.recuadro {
+	border:1px solid black;
+	width:49.5%;
+	display:inline-block;
+	height:49.5%;
+	overflow:hidden;
+}
+
+
