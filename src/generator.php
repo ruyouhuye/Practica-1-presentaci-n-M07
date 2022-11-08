@@ -21,7 +21,7 @@ function make_blog(): void {
 
 function make_galery(string $html_filename, string $dir_name): void {
 
-    $path = "../db/Fotos/$dir_name/*";
+    $path = __DIR__ . "/../db/Fotos/$dir_name/*";
 
     $path_image_array = glob($path);
 
@@ -29,7 +29,7 @@ function make_galery(string $html_filename, string $dir_name): void {
 
     foreach ($path_image_array as $image) {
         $filename = basename($image);
-        $web_links[] = "../db/Fotos/$dir_name/" . $filename;
+        $web_links[] = "/img/$dir_name/" . $filename;
     }
 
     $html_filename = "../public/$html_filename";
@@ -69,7 +69,7 @@ function make_web_service(): void {
     $template_vars = ['webs_array' => $webs_array];
     //echo file_get_contents('https://api.football-data.org/v4/matches');
     $web_contents = render_template($index_template_filename, $template_vars);
-    $web_filename = "../public/service.html";
+    $web_filename = "../public/web_service.html";
     file_put_contents($web_filename, $web_contents);
 }
 
@@ -80,6 +80,7 @@ function main(): void {
     $origin = "../resources/*";
     $destin = "../public/";
     shell_exec("cp -r $origin $destin");
+    shell_exec("cp -r ../db/Fotos/* $destin/img");
     make_blog();
     make_galery("galery.html","Logos");
     make_galery("ballondor.html","BallonDor");
@@ -87,7 +88,7 @@ function main(): void {
     make_galery("promises.html","Promises");
     make_galery("worldcup.html","WorldCup");
     make_table();
-    //make_web_service();
+    make_web_service();
 
 }
 
