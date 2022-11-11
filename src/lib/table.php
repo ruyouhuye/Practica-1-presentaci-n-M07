@@ -1,30 +1,40 @@
 <?php
 declare(strict_types=1);
-namespace Table;
+namespace nsTable;
 
 require_once(__DIR__ . '/utils.php');
-
+use function Utils\println;
+use Utils;
 
 //---------------------------------------------
 class Table{
 
-    // Properties
-    public array $header;
-    public array $body;
-
-
     // Constructor
-    public function __construct(array $header = [], 
-                                array $body = []){
-
-        $this->$header = $header;
-        $this->$body   = $body;
+    public function __construct(public array $header = [], 
+                                public array $body = []){
     }
+
+    public function __toString(): string
+    {
+
+        // $this->header;
+        // $this->body;
+
+        $result = "";
+
+        $result .= implode(' | ', $this->header);
+
+        return $result;
+    }
+
+    public static function read_csv(){
+        
+    } 
     
 }
 
 function main():void {
-    $empty_table = new Table();
+    //$empty_table = new Table();
 
     $header = ['Title','Volumes'];
 
@@ -36,5 +46,9 @@ function main():void {
     ];
 
     $manga_table = new Table($header,$body);
-    var_dump($manga_table);
+    print($manga_table);
+
+
 }
+
+main();
