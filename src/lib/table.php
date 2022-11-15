@@ -22,12 +22,32 @@ class Table{
 
         $result = "";
 
-        $result .= implode(' | ', $this->header);
+        $result .= implode(' | ', $this->header) . PHP_EOL;
 
-        return $result;
+        $result2 = '';
+
+        foreach($this->body as $array){
+            $result2 .= implode(' | ', $array) . PHP_EOL;
+        }
+
+        
+        return $result . $result2;
     }
 
     public static function read_csv(){
+        
+    }
+    
+    public static function write_csv($result, $result2){
+        $fp = fopen('fichero.csv', 'w');
+
+        fputcsv($fp, $result);
+
+        foreach($result2 as $campos){
+            fputcsv($fp,$campos);
+        }
+
+        fclose($fp);
         
     } 
     
@@ -48,6 +68,7 @@ function main():void {
     $manga_table = new Table($header,$body);
     print($manga_table);
 
+    Table::write_csv($header, $body);
 
 }
 
