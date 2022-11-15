@@ -33,24 +33,42 @@ class Table{
         
         return $result . $result2;
     }
-
-    public static function read_csv(){
-        
-    }
     
-    public static function write_csv($result, $result2){
-        $fp = fopen('fichero.csv', 'w');
+    public function write_csv(string $filename) {
 
-        fputcsv($fp, $result);
+        $header_str = implode(",", $this->header) . PHP_EOL;//unir por coma
+        $body_str = "";
 
-        foreach($result2 as $campos){
-            fputcsv($fp,$campos);
+        foreach($this->body as $row){
+            $body_str .= implode(",", $row) . PHP_EOL;//unir por coma y poner dentro de $body_str
         }
 
-        fclose($fp);
+        $data = $header_str . $body_str; // unir dos strings
+
+        file_put_contents($filename,$data); // escribir en disco
         
     } 
     
+    public static function read_csv(string $filename): Table {
+
+        $data = [];
+
+        $contents_str = trim(file_get_contents($filename));//trim — Elimina espacio en blanco (u otro tipo de caracteres: \n\r\t\v\x00) del inicio y el final de la cadena
+        $row_array    = explode("\n", $contents_str);//separar por cada salto de linea
+
+        foreach($row_array as $row) {
+            $field_array = explode(",", $row);//seprar por comas
+            array_push($data, $field_array );//poner al final del array otro array
+        }
+
+        // Separate $data into $header and $body
+        $header = $data[0];
+        array_shift($data); // Remove first row (header)
+        $body = $data;//body seria el nuevo data que no tiene el header
+
+        $table = new Table($header, $body);
+        return $table;
+    }
 }
 
 function main():void {
@@ -68,8 +86,11 @@ function main():void {
     $manga_table = new Table($header,$body);
     print($manga_table);
 
-    Table::write_csv($header, $body);
+    $table = Table::read_csv('fichero.csv');
+    
+    $table->write_csv('fichero2.csv');
 
+    echo $table;
 }
 
 main();
